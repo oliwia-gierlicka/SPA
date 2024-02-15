@@ -1,0 +1,19 @@
+<div *ngIf="dark" class="item-dark d-flex justify-content-between">
+    <div class="w-100 description">
+        <h1 class="title">{{title}}</h1>
+        <p class="text-content">{{text}}</p>
+    </div>
+    <div>
+        <img src="{{image}}" alt="" width="{{width}}">
+    </div>
+</div>
+
+<div *ngIf="!dark" class="item-light d-flex justify-content-between">
+    <div>
+        <img src="{{image}}" alt="" width="{{width}}">
+    </div>
+    <div class="w-100 description">
+        <h1 class="title">{{title}}</h1>
+        <p class="text-content">{{text}}</p>
+    </div>
+</div>

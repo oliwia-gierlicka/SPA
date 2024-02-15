@@ -1,0 +1,29 @@
+<div class="text-center mb-3">
+    <a class="tablink" [class.tablink-active]="current==0" (click)="choose(0)">Fitness</a>
+    <a class="tablink" [class.tablink-active]="current==1" (click)="choose(1)">Wellness</a>
+    <a class="tablink" [class.tablink-active]="current==2" (click)="choose(2)">Spa</a>
+</div>
+
+<div *ngIf="current==0">
+    <app-tab-item title="Pilates for Body Harmony" image="assets/fitness1.jpg" [dark]="true" text="Immerse yourself in our Pilates workout focusing on body balance, strengthening deep muscles, and enhancing flexibility. Discover the harmony between mind and body during this relaxing yet effective session."></app-tab-item>
+    <app-tab-item title="Detox Yoga for a Healthy Body and Mind" image="assets/detoxyoga.jpg" [dark]="false" text="Follow the path to a balanced life with our detox yoga sessions. We concentrate not only on physical strength and flexibility but also on cleansing the mind through deep breathing and meditation."></app-tab-item>
+    <app-tab-item title="HIIT Training for Energy and Vitality" image="assets/energy.webp" [dark]="true" text="Experience an intense HIIT workout that will boost your energy and improve your fitness. Short intervals of high-intensity effort with efficient rest will help you achieve great results in a short time."></app-tab-item>
+    <app-tab-item title="Aqua Fitness for Gentle Activity" image="assets/aqa.jpg" [dark]="false" text="Dive into our aqua fitness program, offering gentle yet effective exercises in the water. It's an excellent way to reduce joint stress while improving strength and fitness."></app-tab-item>
+    <app-tab-item title="Stretching Classes for Body Relaxation" image="assets/stretching.webp" [dark]="true" text="Discover the joy of stretching and relaxation during our stretching classes. We assist in improving flexibility, reducing muscle tension, and providing a sense of calm for your body and mind."></app-tab-item>
+</div>
+
+<div *ngIf="current==1">
+    <app-tab-item title="Relaxing Massage with Essential Oils" image="assets/oil.webp" [dark]="true" text="Experience a unique relaxation massage that will make you forget about daily stress. The use of carefully selected essential oils combined with massage techniques will allow you to experience deep relaxation and tranquility."></app-tab-item>
+    <app-tab-item title="Hot Stone Therapy" image="assets/stone.jpg" [dark]="false" text="Immerse yourself in the luxurious hot stone therapy, where the warmth of natural stones has a relaxing effect on your muscles. It's a perfect way to relieve tension and restore the body's energy balance."></app-tab-item>
+    <app-tab-item title="Moisturizing Body Treatment with Shea Butter" image="assets/shea.webp" [dark]="true" text="Restore your skin's radiance and smoothness with our moisturizing treatment featuring shea butter. Gentle exfoliation, hydration, and nourishment will leave your skin radiant and silky smooth."></app-tab-item>
+    <app-tab-item title="Aromatherapy Sauna" image="assets/sauna.jpg" [dark]="false" text="Discover the beneficial effects of the sauna combined with aromatherapy. It's not only a relaxing experience but also an excellent way to cleanse the skin and improve overall well-being."></app-tab-item>
+    <app-tab-item title="Herbal Bath Ritual" image="assets/bath.jpg" [dark]="true" text="Relax in our herbal bath ritual, where natural plant extracts help relax muscles, reduce stress, and restore energy balance. It's the perfect way to end the day in a peaceful and comfortable setting."></app-tab-item>
+</div>
+
+<div *ngIf="current==2">
+    <app-tab-item title="HydraFacial Treatment" image="assets/hydrafacial.jpeg" [dark]="true" text="Our unique HydraFacial treatment combines the actions of cleansing, exfoliating, moisturizing, and rejuvenating the skin. It's a comprehensive experience that leaves the skin radiant, firm, and full of glow."></app-tab-item>
+    <app-tab-item title="Luxurious Collagen Treatment:" image="assets/collagen.webp" [dark]="false" text="Allow your skin to regain elasticity and a youthful appearance with our luxurious collagen treatment. Stimulating collagen production helps reduce wrinkles and improve the overall skin structure."></app-tab-item>
+    <app-tab-item title="Shea Butter Milk Ritual" image="assets/ritual.webp" [dark]="true" text="Immerse yourself in a luxurious milk ritual that harnesses the nourishing properties of shea butter. This deeply moisturizing treatment leaves your skin silky smooth and beautifully nourished."></app-tab-item>
+    <app-tab-item title="Detoxifying Sea Clay Treatment" image="assets/clay.jpg" [dark]="false" text="Experience a detoxifying treatment with natural sea clay to help remove toxins and excess sebum, restoring freshness and radiance to the skin."></app-tab-item>
+    <app-tab-item title="Aromatherapy Massage" image="assets/massage.jpg" [dark]="true" text="Guide your senses on a journey of relaxation with our aromatherapy massage. Specially selected essential oils combined with massage techniques help reduce stress and restore balance."></app-tab-item>
+</div>

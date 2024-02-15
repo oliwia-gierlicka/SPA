@@ -1,0 +1,38 @@
+.contact{
+    background-color: #B89E6F;
+    color: #FFFCF0;
+    padding: 5rem;
+}
+
+.contact-title{
+    font-size: 40px;
+    font-family: 'Lovelace';
+    text-align: center;
+}
+
+.contact-type{
+    font-size: 15px;
+}
+
+.contact-data{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.contact-item-container {
+    flex-direction: column;
+}
+
+.contact-item {
+    margin-right: auto;
+    margin-left: 25%;
+}
+
+.contact-icon{
+    font-size: 24px;
+}
+
+.m-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}

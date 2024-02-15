@@ -1,0 +1,17 @@
+.tablink{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    color: #695125;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tablink:hover{
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.tablink-active{
+    border-bottom: 2px solid white;
+    color: white;
+}
