@@ -20,6 +20,8 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { TabItemComponent } from './components/tab-item/tab-item.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,14 @@ import { HttpClientModule } from '@angular/common/http';
     FitnessComponent,
     TabsComponent,
     TabItemComponent,
-    ProductsComponent
+    ProductsComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

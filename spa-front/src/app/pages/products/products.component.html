@@ -4,12 +4,6 @@
     </div>
     <div class="content">
 
-        <app-tab-item *ngFor="let product of products" [dark]="true" [width]="300" title="{{product.name}}" text="{{product.description}}" image="{{product.image}}"></app-tab-item>
-
-        <!-- <app-tab-item [dark]="true" [width]="300" title="Moisturizing Cream with Vitamins A, C, and E" image="assets/moisture.webp" text="Provides comprehensive care by deeply moisturizing the skin with three key vitamins - A, C, and E. Vitamin A aids in skin cell regeneration, vitamin C acts as an antioxidant, and vitamin E offers protection against environmental damage. The cream effectively moisturizes, leaving the skin smooth and radiant."></app-tab-item>
-        <app-tab-item [dark]="false" [width]="300" title="Cleansing Face Gel with Aloe Vera Extract" image="assets/aloecream.jpg" text="Gently removes impurities, excess sebum, and makeup, leaving the skin refreshed and purified. Aloe vera extract soothes, reducing irritation and providing a comfortable feeling. The formula does not dry out the skin, making it ideal for daily use."></app-tab-item>
-        <app-tab-item [dark]="true" [width]="300" title="Anti-Aging Serum with Hyaluronic Acid" image="assets/serum.webp" text="Works intensively to reduce wrinkles and improve skin elasticity. Hyaluronic acid moisturizes the skin, giving it firmness and smoothness. The serum also contains active ingredients that stimulate collagen production, enhancing the overall appearance of the skin and preventing the aging process."></app-tab-item>
-        <app-tab-item [dark]="false" [width]="300" title="Purifying Mask with Activated Charcoal" image="assets/mask.jpg" text="Effectively cleanses pores, removing toxins and excess sebum. Activated charcoal acts like a magnet, attracting impurities, and the mask also includes soothing ingredients that restore balance to the skin. The result is purified, matte, and smoothed skin."></app-tab-item>
-        <app-tab-item [dark]="true" [width]="300" title="SPF 30 Sunscreen Cream" image="assets/spf.webp" text="Not only moisturizes effectively but also protects the skin from harmful UV radiation. The cream's formula includes SPF 30, providing effective prevention against photoaging and discoloration. Perfect for daily use, ensuring comprehensive protection against the harmful effects of sunlight."></app-tab-item> -->
+        <app-tab-item *ngFor="let product of products; let i=index" [dark]="i%2==0" [width]="300" title="{{product.name}}" text="{{product.description}}" image="{{product.image}}"></app-tab-item>
     </div>
 </div>

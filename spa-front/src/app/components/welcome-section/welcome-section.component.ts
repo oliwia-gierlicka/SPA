@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome-section',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./welcome-section.component.scss']
 })
 export class WelcomeSectionComponent {
+  constructor(private router: Router) { }
 
+  signIn() {
+    this.router.navigateByUrl('/sign-in')
+  }
 }

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SpaBackend.Db;
+using SpaBackend.Services.Abstract;
 
 namespace SpaBackend.Controllers;
 
@@ -8,16 +7,16 @@ namespace SpaBackend.Controllers;
 [Route("[controller]")]
 public class ProductController:ControllerBase
 {
-    private SpaDbContext db;
+    private readonly IProductService _productService;
 
-    public ProductController(SpaDbContext db)
+    public ProductController(IProductService productService)
     {
-        this.db = db;
+        _productService = productService;
     }
 
     [HttpGet("all")]
-    public async Task<ActionResult> GetAll()
+    public ActionResult GetAll()
     {
-        return Ok(await db.Products.ToListAsync());
+        return Ok(_productService.GetProducts());
     }
 }

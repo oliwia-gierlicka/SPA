@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BackComponent {
 
+  top() {
+    window.scrollTo(0,0)
+  }
 }
