@@ -19,4 +19,10 @@ public class ProductController:ControllerBase
     {
         return Ok(_productService.GetProducts());
     }
+    
+    [HttpGet("details")]
+    public ActionResult GetDetails()
+    {
+        return Ok(_productService.GetProductDetails());
+    }
 }

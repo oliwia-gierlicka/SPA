@@ -19,9 +19,20 @@ import { FitnessComponent } from './pages/fitness/fitness.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TabItemComponent } from './components/tab-item/tab-item.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { HomeUserComponent } from './pages/home-user/home-user.component';
+import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';
+import { ButtonComponent } from './components/button/button.component';
+import { MakeReservationComponent } from './pages/make-reservation/make-reservation.component';
+import { ProductTabItemComponent } from './components/product-tab-item/product-tab-item.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { VisitsComponent } from './pages/visits/visits.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { HomeEmployeeComponent } from './pages/home-employee/home-employee.component';
+import { NavbarEmployeeComponent } from './components/navbar-employee/navbar-employee.component';
 
 @NgModule({
   declarations: [
@@ -42,15 +53,28 @@ import { ReactiveFormsModule } from '@angular/forms';
     TabsComponent,
     TabItemComponent,
     ProductsComponent,
-    SignInComponent
+    SignInComponent,
+    HomeUserComponent,
+    NavbarUserComponent,
+    ButtonComponent,
+    MakeReservationComponent,
+    ProductTabItemComponent,
+    CartComponent,
+    VisitsComponent,
+    OrdersComponent,
+    HomeEmployeeComponent,
+    NavbarEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

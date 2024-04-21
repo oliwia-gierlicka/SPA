@@ -1,0 +1,17 @@
+<div class="containera">
+    <div class="nbar">
+        <app-navbar-user></app-navbar-user>
+    </div>
+    <div class="d-flex content" *ngIf="items.length > 0">
+        <div>
+            <div class="cart-content">
+                <div class="cart-item" *ngFor="let item of items">
+                    <h2>{{item.serviceName}}</h2>
+                    <div>When: {{item.date | date:'yyyy-MM-dd hh:mm'}}</div>
+                    <app-button text="Decline" (click)="decline(item.id)"></app-button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

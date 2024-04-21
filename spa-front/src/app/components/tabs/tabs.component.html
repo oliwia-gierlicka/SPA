@@ -4,5 +4,12 @@
     <a class="tablink" [class.tablink-active]="current=='Spa'" (click)="choose('Spa')">Spa</a>
 </div>
 
-<app-tab-item *ngFor="let s of services; let i=index" title="{{s.name}}" image="{{s.image}}" [dark]="i%2==0" text="{{s.description}}"></app-tab-item>
+<app-tab-item 
+    *ngFor="let s of services; let i=index" 
+    [title]="s.name" 
+    [image]="s.image" 
+    [dark]="i % 2 == 0" 
+    [text]="s.description" 
+    [showOptions]="showOptions" 
+    [serviceId]="s.id"></app-tab-item>
 

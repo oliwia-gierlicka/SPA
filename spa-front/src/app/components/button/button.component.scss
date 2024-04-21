@@ -1,0 +1,10 @@
+.spa-button {
+    background-color: #695125;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.spa-button:hover {
+    background-color: lighten(#695125, 10%);
+}

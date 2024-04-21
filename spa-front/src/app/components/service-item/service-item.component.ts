@@ -11,6 +11,7 @@ export class ServiceItemComponent {
   @Input() title:string="";
   @Input() text:string="";
   @Input() link:string="";
+  @Input() showOptions: boolean = false;
 
   constructor(private router:Router){}
   

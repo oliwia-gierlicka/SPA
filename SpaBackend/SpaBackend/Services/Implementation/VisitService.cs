@@ -17,7 +17,12 @@ public class VisitService : IVisitService
 
     public IEnumerable<Visit> Get(int userId)
     {
-        return _dbContext.Visits.Where(x => x.UserId == userId);
+        return _dbContext.Visits.Where(x => x.UserId == userId).OrderByDescending(x => x.Date);
+    }
+    
+    public IEnumerable<Visit> GetEmployeeVisits(int userId)
+    {
+        return _dbContext.Visits.Where(x => x.EmployeeId == userId).OrderByDescending(x => x.Date);
     }
 
     public async Task Delete(int id, int userId)
@@ -32,21 +37,43 @@ public class VisitService : IVisitService
 
     public async Task Create(VisitForm form, int userId)
     {
-        if (_dbContext.Visits.Any(x=>
-                (x.Date >= form.Date && form.Date.AddMinutes(form.Length) >= x.Date) ||
-                (x.Date.AddMinutes(x.Length) >= form.Date && form.Date.AddMinutes(form.Length) >= x.Date.AddMinutes(x.Length))
+        var service = await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == form.ServiceId);
+        var serviceLength = service?.Length ?? 100000;
+        if (!_dbContext.Visits.Any(x=>
+                (x.Date >= form.Date && form.Date.AddMinutes(serviceLength) >= x.Date) ||
+                (x.Date.AddMinutes(x.Length) >= form.Date && form.Date.AddMinutes(serviceLength) >= x.Date.AddMinutes(x.Length))
             ))
         {
             _dbContext.Visits.Add(new Visit
             {
-                ServiceName = form.ServiceName,
+                ServiceName = service?.Name ?? "",
                 Date = form.Date,
-                Length = form.Length,
+                Length = serviceLength,
                 EmployeeId = form.EmployeeId,
                 UserId = userId
             });
         }
 
         await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<IEnumerable<DateTime>> GetAvailability(int serviceId, int employeeId, DateTime when)
+    {
+        var employeeReservations = _dbContext.Visits.Where(x => x.EmployeeId == employeeId);
+        var serviceLength = (await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == serviceId))?.Length ?? 100000;
+        
+        var startTime = new DateTime(when.Year, when.Month, when.Day, 8, 0, 0);
+        var endTime = new DateTime(when.Year, when.Month, when.Day, 16, 0, 0);
+        var availableSlots = new List<DateTime>();
+
+        while (startTime < endTime)
+        {
+            if (!employeeReservations.Any(x => x.Date == startTime))
+                availableSlots.Add(startTime);
+
+            startTime = startTime.AddMinutes(serviceLength);
+        }
+        
+        return availableSlots;
     }
 }

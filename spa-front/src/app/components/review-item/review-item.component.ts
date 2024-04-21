@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./review-item.component.scss']
 })
 export class ReviewItemComponent {
-  @Input()name: string="";
-  @Input()text: string="";
+  @Input() name: string = "";
+  @Input() text: string = "";
 }

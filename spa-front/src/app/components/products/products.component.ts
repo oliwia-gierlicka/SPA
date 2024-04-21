@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsSectionComponent {
-constructor(private router:Router){}
-navigate(){
-  this.router.navigateByUrl("/products");
-}
+
+  constructor(private router: Router) { }
+  
+  navigate() {
+    this.router.navigateByUrl("/products");
+  }
 }

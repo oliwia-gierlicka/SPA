@@ -13,6 +13,6 @@ public class UserProvider : IUserProvider
 
     public int GetUserId()
     {
-        return int.Parse(_httpContextAccessor.HttpContext?.User?.Identity?.Name ?? "-1");
+        return int.Parse(_httpContextAccessor.HttpContext?.User?.Claims?.FirstOrDefault(x => x.Type=="name")?.Value ?? "-1");
     }
 }

@@ -1,4 +1,4 @@
-.service-item{
+.service-item {
     text-align: center;
     flex-direction: column;
     padding: 0.5rem;
@@ -6,21 +6,21 @@
     cursor: pointer;
 }
 
-.service-item:hover{
+.service-item:hover {
     background-color: #f7f1db;
 }
 
-.service-item-title{
+.service-item-title {
     font-family: 'Lovelace';
     margin-top: 1rem;
     font-size: 20px;
 }
 
 .service-item-image {
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
 }
 
-.service-item-text{
+.service-item-text {
     font-size: 15px;
 }

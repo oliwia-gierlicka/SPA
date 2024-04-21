@@ -36,4 +36,19 @@ public class UserService : IUserService
         });
         await _dbContext.SaveChangesAsync();
     }
+
+    public async Task<bool> IsEmployee(string login)
+    {
+        return (await _dbContext.Users.FirstOrDefaultAsync(x => x.Login == login))?.Role == "employee";
+    }
+
+    public IEnumerable<UserInfo> GetEmployees()
+    {
+        return _dbContext.Users.Where(x => x.Role == "employee").Select(x => new UserInfo
+        {
+            Id = x.Id,
+            Name = x.Name,
+            Surname = x.Surname
+        });
+    }
 }

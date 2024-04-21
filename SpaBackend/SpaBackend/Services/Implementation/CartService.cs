@@ -48,16 +48,27 @@ public class CartService : ICartService
         var id = Guid.NewGuid();
         var products = _dbContext.CartItems.Where(x => x.UserId == userId);
         
-        _dbContext.Transactions.AddRange(products.Select(x=> new Transaction
-        {
-            TransactionId = id,
-            ProductId = x.ProductId,
-            Price = x.Price,
-            Quantity = x.Quantity,
-            UserId = x.UserId
-        }));
         _dbContext.CartItems.RemoveRange(products);
+
+        foreach (var cartItem in products)
+        {
+            var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == cartItem.ProductId);
+
+            _dbContext.Transactions.Add(new Transaction
+            {
+                TransactionId = id,
+                ProductId = cartItem.ProductId,
+                Price = cartItem.Price,
+                Quantity = cartItem.Quantity,
+                UserId = cartItem.UserId
+            });
+
+            product.Amount -= cartItem.Quantity;
+            _dbContext.Products.Update(product);
+
+        }
         
+        _dbContext.CartItems.RemoveRange(products);
         await _dbContext.SaveChangesAsync();
     }
 }

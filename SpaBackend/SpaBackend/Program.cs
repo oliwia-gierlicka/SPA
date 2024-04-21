@@ -33,6 +33,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddControllers();
 builder.Services.AddTransient<ITokenProvider, TokenProvider>();
 builder.Services.AddTransient<IUserProvider, UserProvider>();
+builder.Services.AddTransient<ICartService, CartService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<ISpaService, SpaService>();
+builder.Services.AddTransient<ITransactionService, TransactionService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IVisitService, VisitService>();
+builder.Services.AddHttpContextAccessor();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>

@@ -4,6 +4,14 @@
     </div>
     <div class="content">
 
-        <app-tab-item *ngFor="let product of products; let i=index" [dark]="i%2==0" [width]="300" title="{{product.name}}" text="{{product.description}}" image="{{product.image}}"></app-tab-item>
+        <app-product-tab-item 
+            *ngFor="let product of products; let i=index" 
+            [dark]="i%2==0" 
+            [width]="300"
+            [title]="product.name" 
+            [text]="product.description" 
+            [image]="product.image"
+            [productId]="product.id" 
+            [price]="product.price"></app-product-tab-item>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="service-item d-flex" (click)="navigate()">
-    <img class="service-item-image" src="{{image}}" width="256" height="256">
+    <img class="service-item-image" [src]="image" width="256" height="256">
     <i class="service-item-title">{{title}}</i>
     <p class="mt-2 service-item-text">{{text}}</p>
 </div>

@@ -4,5 +4,5 @@ namespace SpaBackend.Services.Abstract;
 
 public interface ITransactionService
 {
-    IEnumerable<Transaction> GetTransactions(int userid);
+    IDictionary<Guid, IEnumerable<Transaction>> GetTransactions(int userid);
 }

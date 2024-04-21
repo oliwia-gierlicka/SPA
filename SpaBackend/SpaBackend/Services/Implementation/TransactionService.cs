@@ -13,8 +13,9 @@ public class TransactionService : ITransactionService
         _db = db;
     }
 
-    public IEnumerable<Transaction> GetTransactions(int userid)
+    public IDictionary<Guid, IEnumerable<Transaction>> GetTransactions(int userid)
     {
-        return _db.Transactions.Where(x => x.UserId == userid);
+        return _db.Transactions.Where(x => x.UserId == userid).GroupBy(x => x.TransactionId)
+            .ToDictionary(x => x.Key, x => x.AsEnumerable());
     }
 }

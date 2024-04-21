@@ -1,16 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SpaBackend.Db;
-using SpaBackend.Db.Entity;
 using SpaBackend.Models;
 using SpaBackend.Services.Abstract;
-using SpaBackend.Services.Implementation;
 
 namespace SpaBackend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController:ControllerBase
+public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
 
@@ -30,7 +26,14 @@ public class UserController:ControllerBase
     public async Task<ActionResult> Login(LoginForm form)
     {
         var token = await _userService.Login(form);
-        return token is not null ? Ok(token) : BadRequest();
+        return token is not null
+            ? Ok(new { Token = token, IsEmployee = await _userService.IsEmployee(form.Login) })
+            : BadRequest();
     }
 
+    [HttpGet("employees")]
+    public ActionResult GetEmployees()
+    {
+        return Ok(_userService.GetEmployees());
+    }
 }

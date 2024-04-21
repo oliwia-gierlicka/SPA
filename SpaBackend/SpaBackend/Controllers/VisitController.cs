@@ -44,4 +44,10 @@ public class VisitController:ControllerBase
         await _visitService.Create(form, userId);
         return Ok();
     }
+
+    [HttpPost("availability")]
+    public async Task<ActionResult> GetAvailability(ServiceAvailabilityRequest request)
+    {
+        return Ok(await _visitService.GetAvailability(request.ServiceId, request.EmployeeId, request.When));
+    }
 }

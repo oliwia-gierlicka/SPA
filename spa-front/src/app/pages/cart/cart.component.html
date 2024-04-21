@@ -1,0 +1,23 @@
+<div class="containera">
+    <div class="nbar">
+        <app-navbar-user></app-navbar-user>
+    </div>
+    <div class="d-flex content" *ngIf="products.length > 0 && items.length > 0">
+        <div>
+            <div class="cart-content">
+                <div class="cart-item" *ngFor="let item of items">
+                    <div>{{getProductName(item.productId)}}</div>
+                    <div>Quantity: {{item.quantity}}</div>
+                    <div>Price: {{item.quantity * item.price}} E</div>
+                </div>
+
+            </div>
+
+            <div class="summary">
+                <div>Summary: {{calculateSummary()}}</div>
+
+                <app-button text="Buy" (click)="buy()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

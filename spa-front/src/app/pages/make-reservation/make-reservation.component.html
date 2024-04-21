@@ -1,0 +1,26 @@
+<div class="containera">
+    <div class="nbar">
+        <app-navbar-user></app-navbar-user>
+    </div>
+    <div class="d-flex content">
+        <div [formGroup]="form" class="reservation-info">
+            <h2>Make a reservation</h2>
+            <div>For: <b>{{serviceName}}</b></div>
+            <div>
+                Which employee:
+                <select formControlName="employeeId">
+                    <option *ngFor="let item of employees" [value]="item.id">{{item.name}} {{item.surname}}</option>
+                </select>
+            </div>
+            <div *ngIf="form.controls.employeeId.value">When: <input type="date" (change)="changeDate($event)" /></div>
+            <div *ngIf="availableSlots.length > 0">
+                Time:
+                <select formControlName="date">
+                    <option [value]="item" *ngFor="let item of availableSlots">{{item | date:'hh:mm' }}</option>
+                </select>
+            </div>
+
+            <app-button text="Make a reservation" (click)="send()"></app-button>
+        </div>
+    </div>
+</div>

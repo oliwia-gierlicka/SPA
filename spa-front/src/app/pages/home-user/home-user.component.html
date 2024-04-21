@@ -1,0 +1,21 @@
+<div class="containera">
+    <div class="nbar">
+        <app-navbar-user></app-navbar-user>
+    </div>
+    <div class="d-flex content">
+        <div class="home-content">
+            <ng-container *ngIf="visit">
+                <h2>Your current visit</h2>
+                <div>Service name: {{visit.serviceName}}</div>
+                <div>Date: {{visit.date | date:'yyyy-MM-dd hh:mm'}}</div>
+                <div class="mt-2">
+                    <app-button text="Decline" (click)="deleteVisit()"></app-button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!visit">
+                <h2>You don't have any visit</h2>
+                <app-button text="Services" (click)="goToServices()"></app-button>
+            </ng-container>
+        </div>
+    </div>
+</div>
