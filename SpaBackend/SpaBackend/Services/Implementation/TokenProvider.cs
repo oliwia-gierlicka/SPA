@@ -1,5 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Tokens;
 using SpaBackend.Db.Entity;
 using SpaBackend.Services.Abstract;
@@ -8,9 +10,16 @@ namespace SpaBackend.Services.Implementation;
 
 public class TokenProvider : ITokenProvider
 {
+    private readonly IConfiguration _configuration;
+
+    public TokenProvider(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+    
     public string Generate(User user)
     {
-        var keyBytes = "tisejraiojfcsidfjasifjaiofjasifoisdf"u8.ToArray();
+        var keyBytes = Encoding.Default.GetBytes(_configuration["AuthSecret"]).ToArray();
         var symmetricKey = new SymmetricSecurityKey(keyBytes);
 
         var signingCredentials = new SigningCredentials(

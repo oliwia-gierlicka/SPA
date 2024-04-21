@@ -11,13 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<SpaDbContext>(o=>
-    o.UseSqlServer("Server=DESKTOP-7PPCNFC\\SQLEXPRESS;Database=Spa;Trusted_Connection=True;Encrypt=False;"));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opts =>
     {
         //convert the string signing key to byte array
         byte[] signingKeyBytes = Encoding.UTF8
-            .GetBytes("tisejraiojfcsidfjasifjaiofjasifoisdf");
+            .GetBytes(builder.Configuration["AuthSecret"]);
 
         opts.TokenValidationParameters = new TokenValidationParameters
         {
