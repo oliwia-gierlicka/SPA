@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
 using SpaBackend.Db;
 using SpaBackend.Db.Entity;
@@ -19,8 +21,9 @@ public class UserService : IUserService
 
     public async Task<string?> Login(LoginForm form)
     {
+        var hash = Convert.ToHexString(SHA256.HashData(Encoding.Default.GetBytes(form.Password)));
         var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Login == form.Login);
-        return user is not null && form.Password==user.Password ? _tokenProvider.Generate(user) : null;
+        return user is not null && hash==user.Password ? _tokenProvider.Generate(user) : null;
     }
 
     public async Task CreateUser(UserForm form)
@@ -32,7 +35,7 @@ public class UserService : IUserService
             Surname = form.Lastname,
             Email = form.Email,
             Login = form.Login,
-            Password = form.Password
+            Password = Convert.ToHexString(SHA256.HashData(Encoding.Default.GetBytes(form.Password)))
         });
         await _dbContext.SaveChangesAsync();
     }
